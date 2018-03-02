@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<div class="create-container">
+  <div class="create-card">
+    <div class="create-column">
+      <img alt="created-image" id="created-image" src="" />
+    </div>
+    <div class="divider"></div>
+    <div class="create-column">
+      <!-- Add your title code here: -->
+      <h2 class="form-title">Create</h2>
+      <form class="input-form" action="create" method="post" >
+        <label class="form-label" for="title">Title</label>
+        <input id="title-input" name="title" maxlength="50"/>
+          {{#with newItem.errors.title as |error|}}
+          <span class="error">{{ error.message }}</span>
+          {{/with}}
+        <label class="form-label" for="description">Description</label>
+        <textarea id="description-input" name="description">{{newItem.description}}</textarea>
+          {{#with newItem.errors.description as |error|}}
+          <span class="error">{{ error.message }}</span>
+          {{/with}}
+        <label class="form-label" for="imageUrl">Image Url</label>
+        <input id="imageUrl-input" name="imageUrl" oninput="handleChange" value="{{newItem.imageUrl}}"/>
+          {{#with newItem.errors.imageUrl as |error|}}
+          <span class="error">{{ error.message }}</span>
+          {{/with}}
+        <div class="form-navigation">
+          <a href="/">
+            <img class="back-arrow" src="/img/back.svg" alt="back"/>
+          </a>
+        <button class="button submit-button" id="submit-button" type="submit">
+            <p>Create new</p>
+        </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

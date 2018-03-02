@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<div id="items-container" class="items-container">
+  {{#each items as |item|}}
+    <div id="item-{{item._id}}" class="item-card">
+      <a href="/items/{{item._id}}">
+        <img alt="item-img" class="item-img" src="{{item.imageUrl}}"/>
+        <div class="image-overlay">
+          <div class="overlay-button delete-button">
+            <form id="delete-{{item._id}}" class="delete-form" action="/items/{{item._id}}/delete" method="post">
+              <input type="hidden" name="_method" value="delete"/>
+              <img src="/img/delete.svg" alt="delete"/>
+              <p>Delete</p>
+            </form>
+          </div>
+          <div class="overlay-button view-button">
+            <a href="/items/{{item._id}}">
+              <img src="/img/view.svg" alt="view"/>
+              <p>View</p>
+            </a>
+          </div>
+        </div>
+        <div class="item-title">
+          <p>{{item.title}}</p>
+        </div>
+      </a>
+    </div>
+  {{/each}}
+</div>
+
+<div id="navigation">
+  <a href="/items/create">
+    <div class="create-button">
+      <div class="create-image">
+        <img src="/img/add.svg" alt="create"/>
+      </div>
+      <p>Add new item</p>
+    </div>
+  </a>
+</div>
+
+<script>
+  document.querySelectorAll('.delete-form')
+    .forEach(function(element) {
+      element.onclick = function(e) {
+        e.preventDefault();
+        element.submit()};
+    });
+</script>

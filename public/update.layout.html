@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>gather</title>
+    <link rel="icon" type="image/ico" href="img/favicon.ico"/>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600" rel="stylesheet"/>
+    <link rel="stylesheet" href="stylesheets/reset.css" />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+  </head>
+  <body>
+    <div id="title-container">
+      <a href="index.html">
+        <img src="img/logo.svg" alt="logo" />
+        <div id="title">gather</div>
+      </a>
+    </div>
+    <div class="create-container">
+      <div class="create-card">
+        <div class="create-column">
+          <img id="created-image" src="https://placebear.com/900/400" alt="image to save"/>
+        </div>
+        <div class="divider">
+        </div>
+        <div class="create-column">
+            <h2 class="form-title">Update item</h2>
+            <form class="input-form" action="/items/id/update" method="post" >
+              <label class="form-label" for="title">Title</label>
+              <input id="title-input" name="title" maxlength="50" value="Big Bear"/>
+
+              <label class="form-label" for="description">Description</label>
+              <textarea id="description-input" name="description">This is a really big bear!!!!</textarea>
+
+              <label class="form-label" for="imageUrl">Image Url</label>
+              <input id="imageUrl-input" name="imageUrl" oninput="handleChange" value="https://placebear.com/900/400"/>
+
+              <div class="form-navigation">
+                <a href="/">
+                    <img class="back-arrow" src="img/back.svg" alt="back"/>
+                </a>
+                <button class="button submit-button" id="submit-button" type="submit">
+                    <p>Update</p>
+                </button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      var img = document.getElementById('created-image');
+      function handleChange(e) {
+        img.src = e.target.value;
+      }
+      document.getElementById('imageUrl-input').oninput = handleChange;
+    </script>
+  </body>
+</html>
